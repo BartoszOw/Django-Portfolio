@@ -33,7 +33,16 @@
             </li>
           </ul>
       </nav>
-      <main role="main" class="container" style="margin-top: 10px;">{% block content %}{% endblock content %}</main>
+      <main role="main" class="container" style="margin-top: 10px;">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+      {% endif %}
+          {% block content %}{% endblock content %}
+        </main>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

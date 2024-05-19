@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
+from django.contrib import messages
 # Create your views here.
 
 def main(request):
+    messages.add_message(request, messages.INFO, "Strona Głowna")
     c = {'contact': 'Contact', 'bio': 'bio', 'active_page': 'home'}
     return HttpResponse(render(
         request=request,
@@ -11,6 +12,7 @@ def main(request):
         context=c
     ))
 def bio(request):
+    messages.add_message(request, messages.INFO, "Strona Bio")
     c= {'info1': 'Mam na imie Bartosz',
         'info2': 'Programuje w Python',
         'info3': 'Mieszkam w malym miescie',
@@ -25,6 +27,7 @@ def bio(request):
     ))
 
 def contact(request):
+    messages.add_message(request, messages.INFO, "Strona Kontakt")
     c = {'active_page': 'contact'}
     return HttpResponse(render(
         request=request,
